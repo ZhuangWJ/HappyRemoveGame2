@@ -260,12 +260,9 @@ public class GridConn : MonoBehaviour
                 //优先判断是否有特效方块
                 foreach (GridBean gridBean in lineConnectGridList)
                 {
-                    
+                    //TODO 实现特效方块消除效果
                     if (gridBean.specialTpye >= 0)
-                    {
-                        //TODO 实现特效方块消除效果
                         RemoveSpecialGrid(gridBean);
-                    }
                 }
 
                 //判断是否需要消除lineConnectGridList剩余的普通方块
@@ -361,11 +358,9 @@ public class GridConn : MonoBehaviour
                 }
 
                 //[8]判断是否生成特效方块
+                //产生魔力鸟
                 if (lineConnectGridList.Count >= 10)
-                {
-                    //产生魔力鸟
                     CreateSpecialGrid(0);
-                }
                 else
                 {
                     if (lineConnectGridList.Count >= 6)
@@ -383,11 +378,9 @@ public class GridConn : MonoBehaviour
                             }
                         }
 
+                        //产生竖线特效
                         if (isTheSameVertical)
-                        {
-                            //产生竖线特效
                             CreateSpecialGrid(1);
-                        }
                         else
                         {
                             bool isTheSameHorizontal = true;
@@ -399,16 +392,12 @@ public class GridConn : MonoBehaviour
                                     break;
                                 }
                             }
+
+                            //产生横线特效
                             if (isTheSameHorizontal)
-                            {
-                                //产生横线特效
                                 CreateSpecialGrid(2);
-                            }
-                            else
-                            {
-                                //若不为上述两种情况，则产生爆炸方块
+                            else//若不为上述两种情况，则产生爆炸方块
                                 CreateSpecialGrid(3);
-                            }
                         }
                     }
                 }
@@ -457,7 +446,17 @@ public class GridConn : MonoBehaviour
     //消除特效方块
     private void RemoveSpecialGrid(GridBean gridBean)
     {
-
+        switch (gridBean.specialTpye)
+        {
+            case 0://魔力鸟
+                break;
+            case 1://竖线
+                break;
+            case 2://横线
+                break;
+            case 3://爆炸
+                break;
+        }
     }
 
     //生成特效方块
